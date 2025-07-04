@@ -37,21 +37,21 @@ app.use("/user", userRoute);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// try{
+try{
 
-// if (process.env.NODE_ENV === "production") {
-//     const frontendPath = path.join(__dirname, "Frontend", "dist");
-//     app.use(express.static(frontendPath));
+if (process.env.NODE_ENV === "production") {
+    const frontendPath = path.join(__dirname, "Frontend", "dist");
+    app.use(express.static(frontendPath));
 
-//     app.get("*", (req, res) => {
-//         res.sendFile(path.join(frontendPath, "index.html"));
-//     });
-// }
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(frontendPath, "index.html"));
+    });
+}
 
-// }
-// catch (error) {
-//     console.log("Error: ", error);
-// }
+}
+catch (error) {
+    console.log("Error: ", error);
+}
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
